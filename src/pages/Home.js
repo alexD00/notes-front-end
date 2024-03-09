@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
+
+  const { id } = useParams();
 
   useEffect(() => {
     loadNotes();
@@ -12,6 +14,11 @@ export default function Home() {
   const loadNotes = async () => {
     const result = await axios.get("http://localhost:8080/api/notes");
     setNotes(result.data);
+  };
+
+  const deleteNote = async (id) => {
+    await axios.delete(`http://localhost:8080/api/notes/${id}`);
+    loadNotes();
   };
 
   return (
@@ -40,7 +47,12 @@ export default function Home() {
                   >
                     Edit
                   </Link>
-                  <button className="btn btn-danger mx-2">Delete</button>
+                  <button
+                    className="btn btn-danger mx-2"
+                    onClick={() => deleteNote(note.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
