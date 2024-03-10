@@ -40,7 +40,7 @@ export default function EditNote() {
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
               <label htmlFor="Name" className="form-label">
-                Content
+                <b>Content</b>
               </label>
               <div style={{ marginBottom: "20px" }}>
                 <textarea

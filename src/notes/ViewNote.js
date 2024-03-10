@@ -23,17 +23,18 @@ export default function ViewNote() {
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Note Details</h2>
-          <div className="card" style={{ marginBottom: "20px" }}>
-            <div className="card-header">
-              Details of note with id: {id}
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <b>Content:</b>
-                  {note.content}
-                </li>
-              </ul>
-            </div>
-          </div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              <b>Content:</b>
+              <textarea
+                className="form-control"
+                style={{ height: "300px" }}
+                value={note.content}
+                readOnly
+              />
+            </li>
+          </ul>
+
           <Link className="btn btn-primary my-2" to={"/"}>
             Return Home
           </Link>
