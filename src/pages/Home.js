@@ -58,7 +58,16 @@ export default function Home() {
                   </Link>
                   <button
                     className="btn btn-danger mx-2"
-                    onClick={() => deleteNote(note.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (
+                        window.confirm(
+                          `Are you sure you want to delete: ${note.title}`
+                        )
+                      ) {
+                        deleteNote(note.id);
+                      }
+                    }}
                   >
                     Delete
                   </button>
