@@ -25,7 +25,7 @@ export default function AddNote() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Add note</h2>
+          <h2 className="text-center m-4">Add Note</h2>
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
               <label htmlFor="Name" className="form-label">
