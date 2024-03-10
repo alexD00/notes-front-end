@@ -40,7 +40,12 @@ export default function Home() {
                 </th>
                 <td>{note.content}</td>
                 <td>
-                  <button className="btn btn-primary mx-2">View</button>
+                  <Link
+                    className="btn btn-primary mx-2"
+                    to={`/viewNote/${note.id}`}
+                  >
+                    View
+                  </Link>
                   <Link
                     className="btn btn-outline-primary mx-2"
                     to={`/editNote/${note.id}`}
