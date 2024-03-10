@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 export default function ViewNote() {
   const [note, setNote] = useState({
+    title: "",
     content: "",
   });
 
@@ -22,10 +23,14 @@ export default function ViewNote() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Note Details</h2>
+          <h2 className="text-center m-4">{note.title}</h2>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <b>Content:</b>
+              <div style={{ marginBottom: "20px" }}>
+                {note.createdAt &&
+                  typeof note.createdAt === "string" &&
+                  note.createdAt.substring(0, 10)}
+              </div>
               <textarea
                 className="form-control"
                 style={{ height: "300px" }}

@@ -28,7 +28,9 @@ export default function Home() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Content</th>
+              <th scope="col">Title</th>
+              <th scope="col">Content Preview</th>
+              <th scope="col">Created</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -38,7 +40,9 @@ export default function Home() {
                 <th scope="row" key={index}>
                   {index + 1}
                 </th>
-                <td>{note.content}</td>
+                <td>{note.title}</td>
+                <td>{note.content.substring(0, 35)}</td>
+                <td>{note.createdAt.substring(0, 10)}</td>
                 <td>
                   <Link
                     className="btn btn-primary mx-2"

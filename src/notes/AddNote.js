@@ -6,10 +6,11 @@ export default function AddNote() {
   let navigate = useNavigate();
 
   const [note, setNote] = useState({
+    title: "",
     content: "",
   });
 
-  const { content } = note;
+  const { title, content } = note;
 
   const onInputChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -28,6 +29,18 @@ export default function AddNote() {
           <h2 className="text-center m-4">Add Note</h2>
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
+              <div>
+                <label htmlFor="Name" className="form-label">
+                  Title
+                </label>
+                <input
+                  className="form-control"
+                  placeholder="Type the title"
+                  name="title"
+                  value={title}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
               <label htmlFor="Name" className="form-label">
                 Content
               </label>
