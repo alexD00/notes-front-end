@@ -1,29 +1,62 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 export default function Home() {
-  const [notes, setNotes] = useState([]);
+  const [search, setSearch] = useState("");
 
-  const { id } = useParams();
+  const [filteredNotes, setFilteredNotes] = useState([]);
 
   useEffect(() => {
-    loadNotes();
-  }, []);
+    filterNotes();
+  }, [search]); // Trigger filterNotes whenever the search state changes
 
-  const loadNotes = async () => {
-    const result = await axios.get("http://localhost:8080/api/notes");
-    setNotes(result.data);
+  const filterNotes = async () => {
+    try {
+      // If search is empty the response will contain all the notes
+      const response = await axios.get(
+        `http://localhost:8080/api/notes/filter?keyword=${search}`
+      );
+      setFilteredNotes(response.data); // Update state with filtered notes data
+    } catch (error) {
+      console.error("Error fetching filtered notes:", error);
+    }
   };
+
+  //   const { id } = useParams();
+  //   const [notes, setNotes] = useState([]);
+  //   useEffect(() => {
+  //     loadNotes();
+  //   }, []);
+
+  //   const loadNotes = async () => {
+  //     const result = await axios.get("http://localhost:8080/api/notes");
+  //     setNotes(result.data);
+  //   };
 
   const deleteNote = async (id) => {
     await axios.delete(`http://localhost:8080/api/notes/${id}`);
-    loadNotes();
+    // loadNotes();
+    window.location.reload();
   };
 
   return (
     <div className="container">
       <div className="py-4">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">
+            <BsSearch />
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            placeholder="Search notes"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <table className="table border shadow">
           <thead>
             <tr>
@@ -35,7 +68,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {notes.map((note, index) => (
+            {filteredNotes.map((note, index) => (
               <tr>
                 <th scope="row" key={index}>
                   {index + 1}
