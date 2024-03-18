@@ -19,7 +19,7 @@ export default function AddNote() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/api/notes", note);
-    navigate("/");
+    navigate("/home");
   };
 
   return (
@@ -54,7 +54,7 @@ export default function AddNote() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
-              <Link className="btn btn-outline-danger mx-2" to={"/"}>
+              <Link className="btn btn-outline-danger mx-2" to={"/home"}>
                 Cancel
               </Link>
               <button type="submit" className="btn btn-outline-primary">

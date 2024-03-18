@@ -1,12 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+  const isRootPath = location.pathname === "/";
+
+  // Don't render Navbar on Login page or root path
+  if (isLoginPage || isRootPath) {
+    return null;
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to={"/"}>
+          <Link className="navbar-brand" to={"/home"}>
             My Notes
           </Link>
           <button
