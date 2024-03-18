@@ -18,7 +18,12 @@ export default function AddNote() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/api/notes", note);
+    const response = await axios.post("http://localhost:8080/api/notes", note, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
+
     navigate("/home");
   };
 
