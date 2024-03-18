@@ -15,7 +15,11 @@ export default function ViewNote() {
   }, []);
 
   const loadNote = async () => {
-    const result = await axios.get(`http://localhost:8080/api/notes/${id}`);
+    const result = await axios.get(`http://localhost:8080/api/notes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
     setNote(result.data);
   };
 
@@ -40,7 +44,7 @@ export default function ViewNote() {
             </li>
           </ul>
 
-          <Link className="btn btn-primary my-2" to={"/"}>
+          <Link className="btn btn-primary my-2" to={"/home"}>
             Return Home
           </Link>
         </div>

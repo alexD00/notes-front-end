@@ -29,7 +29,11 @@ export default function Home() {
   };
 
   const deleteNote = async (id) => {
-    await axios.delete(`http://localhost:8080/api/notes/${id}`);
+    await axios.delete(`http://localhost:8080/api/notes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
     // loadNotes();
     window.location.reload();
   };

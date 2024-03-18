@@ -24,12 +24,20 @@ export default function EditNote() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/api/notes/${id}`, note);
-    navigate("/");
+    await axios.put(`http://localhost:8080/api/notes/${id}`, note, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
+    navigate("/home");
   };
 
   const loadNote = async () => {
-    const result = await axios.get(`http://localhost:8080/api/notes/${id}`);
+    const result = await axios.get(`http://localhost:8080/api/notes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
     setNote(result.data);
   };
 
@@ -65,7 +73,7 @@ export default function EditNote() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
-              <Link className="btn btn-outline-danger mx-2" to={"/"}>
+              <Link className="btn btn-outline-danger mx-2" to={"/home"}>
                 Cancel
               </Link>
               <button type="submit" className="btn btn-outline-primary">
