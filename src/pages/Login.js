@@ -21,7 +21,13 @@ export default function Login() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/users/login", loginInfo);
+      const response = await axios.post(
+        "http://localhost:8080/api/users/login",
+        loginInfo
+      );
+      const jwtToken = response.data.token;
+      sessionStorage.setItem("jwtToken", jwtToken);
+
       navigate("/home"); // Redirect to home page upon successful login
     } catch (error) {
       console.error("Login failed:", error);
@@ -29,8 +35,6 @@ export default function Login() {
       setError("Invalid username or password"); // Set error message
     }
   };
-
-  console.log(loginInfo);
 
   return (
     <div className="container">

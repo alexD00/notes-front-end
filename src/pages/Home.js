@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 import { Link, useParams } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 
@@ -14,26 +14,19 @@ export default function Home() {
 
   const filterNotes = async () => {
     try {
-      // If search is empty the response will contain all the notes
       const response = await axios.get(
-        `http://localhost:8080/api/notes/filter?keyword=${search}`
+        `http://localhost:8080/api/notes/filter?keyword=${search}`,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+          },
+        }
       );
       setFilteredNotes(response.data); // Update state with filtered notes data
     } catch (error) {
       console.error("Error fetching filtered notes:", error);
     }
   };
-
-  //   const { id } = useParams();
-  //   const [notes, setNotes] = useState([]);
-  //   useEffect(() => {
-  //     loadNotes();
-  //   }, []);
-
-  //   const loadNotes = async () => {
-  //     const result = await axios.get("http://localhost:8080/api/notes");
-  //     setNotes(result.data);
-  //   };
 
   const deleteNote = async (id) => {
     await axios.delete(`http://localhost:8080/api/notes/${id}`);
