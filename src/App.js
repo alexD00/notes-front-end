@@ -13,6 +13,7 @@ import EditNote from "./notes/EditNote";
 import ViewNote from "./notes/ViewNote";
 import Login from "./pages/Login";
 import { Navigate } from "react-router-dom";
+import PageNotSupported from "./pages/PageNotSupported";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -64,6 +65,10 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          {/* Catch unsupported routes */}
+          <Route path="/*" element={<Navigate to="/unsupported" />} />
+          <Route path="/unsupported" element={<PageNotSupported />} />
 
           <Route path="/login" element={<Login />} />
         </Routes>

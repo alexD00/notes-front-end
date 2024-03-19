@@ -5,9 +5,10 @@ export default function Navbar() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const isRootPath = location.pathname === "/";
+  const isUnsupported = location.pathname === "/unsupported";
 
   // Don't render Navbar on Login page or root path
-  if (isLoginPage || isRootPath) {
+  if (isLoginPage || isRootPath || isUnsupported) {
     return null;
   }
 
