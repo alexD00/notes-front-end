@@ -14,6 +14,7 @@ import ViewNote from "./notes/ViewNote";
 import Login from "./pages/Login";
 import { Navigate } from "react-router-dom";
 import PageNotSupported from "./pages/PageNotSupported";
+import SignUp from "./pages/SignUp";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -28,6 +29,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/signUp" element={<SignUp />} />
 
           {/* <Route exact path="/home" element={<Home />} /> */}
           <Route

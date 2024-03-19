@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   let navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function Login() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Login</h2>
+          <h2 className="text-center m-4">Log in</h2>
           {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
@@ -83,6 +83,9 @@ export default function Login() {
             </div>
           </form>
         </div>
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        Don't have an account? <Link to="/signUp">Sign up</Link>
       </div>
     </div>
   );
