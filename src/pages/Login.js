@@ -31,8 +31,16 @@ export default function Login() {
       navigate("/home"); // Redirect to home page upon successful login
     } catch (error) {
       console.error("Login failed:", error);
-      // Handle login failure (e.g., display error message to user)
-      setError("Invalid username or password"); // Set error message
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.errorMessage
+      ) {
+        setError(error.response.data.errorMessage); // Set error message from response
+      } else {
+        // Default error message for any other error
+        setError("Log in failed. Please try again later.");
+      }
     }
   };
 
