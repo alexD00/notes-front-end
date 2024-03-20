@@ -1,9 +1,19 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   let navigate = useNavigate();
+  const queryParams = new URLSearchParams(window.location.search);
+  const isSuccess = queryParams.get("success") === "true";
+  const [showAlert, setShowAlert] = useState(isSuccess);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAlert(false);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [loginInfo, setLoginInfo] = useState({
     username: "",
@@ -95,6 +105,23 @@ export default function Login() {
       <div style={{ marginTop: "20px" }}>
         Don't have an account? <Link to="/signUp">Sign up</Link>
       </div>
+      {showAlert && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          <div
+            className="alert alert-success"
+            role="alert"
+            style={{ display: "inline-block", minWidth: "fit-content" }}
+          >
+            Account created successfully. Please log in.
+          </div>
+        </div>
+      )}
     </div>
   );
 }

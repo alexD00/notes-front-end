@@ -28,10 +28,7 @@ export default function SignUp() {
         userInfo
       );
 
-      setTimeout(() => {
-        alert("Account created successfully");
-      }, 500);
-      navigate("/"); // Redirect to home page upon successful login
+      navigate("/?success=true"); // Redirect to home page upon successful login
     } catch (error) {
       console.error("Sign up failed:", error);
       if (
