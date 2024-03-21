@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios, { AxiosHeaders } from "axios";
 import { Link, useParams } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
+import { MdEditDocument } from "react-icons/md";
+import { LuEye } from "react-icons/lu";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -78,13 +81,13 @@ export default function Home() {
                     className="btn btn-primary mx-2"
                     to={`/viewNote/${note.id}`}
                   >
-                    View
+                    <LuEye /> View
                   </Link>
                   <Link
                     className="btn btn-outline-primary mx-2"
                     to={`/editNote/${note.id}`}
                   >
-                    Edit
+                    <MdEditDocument /> Edit
                   </Link>
                   <button
                     className="btn btn-danger mx-2"
@@ -99,7 +102,7 @@ export default function Home() {
                       }
                     }}
                   >
-                    Delete
+                    <MdDelete /> Delete
                   </button>
                 </td>
               </tr>

@@ -1,6 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
+import { TbLogout } from "react-icons/tb";
+import { MdNoteAlt } from "react-icons/md";
 
 export default function Navbar() {
   const location = useLocation();
@@ -37,7 +41,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <Link className="btn btn-outline-light" to="/addNote">
-            Add Note
+            <MdNoteAlt /> Add Note
           </Link>
           <div className="nav-item dropdown">
             <button
@@ -54,8 +58,13 @@ export default function Navbar() {
               aria-labelledby="userDropdown"
             >
               <li>
+                <Link className="dropdown-item" to="/home">
+                  <AiFillHome /> Home
+                </Link>
+              </li>
+              <li>
                 <Link className="dropdown-item" to="/profile">
-                  User Profile
+                  <FaUser /> Profile
                 </Link>
               </li>
               <li>
@@ -68,7 +77,7 @@ export default function Navbar() {
                   style={{ color: "red" }}
                   onClick={handleLogout}
                 >
-                  Log out
+                  <TbLogout /> Log out
                 </Link>
               </li>
             </ul>

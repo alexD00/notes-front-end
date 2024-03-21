@@ -99,8 +99,8 @@ export default function SignUp() {
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-outline-primary"
-                  style={{ marginTop: "20px" }}
+                  className="btn btn-primary mx-2"
+                  style={{ marginTop: "40px" }}
                 >
                   Sign Up
                 </button>
