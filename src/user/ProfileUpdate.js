@@ -19,8 +19,6 @@ export default function ProfileUpdate() {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  console.log(username, email, password);
-
   useEffect(() => {
     loadUserProfile();
   }, []);
@@ -38,7 +36,7 @@ export default function ProfileUpdate() {
         }
       );
 
-      navigate("/profile");
+      navigate("/profile?successInfo=true");
     } catch (error) {
       console.error("Update failed:", error);
       if (
@@ -113,20 +111,14 @@ export default function ProfileUpdate() {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <Link
-                  className="btn btn-outline-danger mx-2"
-                  style={{ marginTop: "20px" }}
-                  to={"/profile"}
-                >
-                  Cancel
-                </Link>
-                <button
-                  type="submit"
-                  className="btn btn-outline-primary"
-                  style={{ marginTop: "20px" }}
-                >
-                  Submit
-                </button>
+                <div style={{ marginTop: "40px" }}>
+                  <Link className="btn btn-outline-danger mx-2" to={"/profile"}>
+                    Cancel
+                  </Link>
+                  <button type="submit" className="btn btn-outline-primary">
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </form>

@@ -17,6 +17,7 @@ import PageNotSupported from "./pages/PageNotSupported";
 import SignUp from "./pages/SignUp";
 import Profile from "./user/Profile";
 import ProfileUpdate from "./user/ProfileUpdate";
+import ProfilePasswordUpdate from "./user/ProfilePasswordUpdate";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -32,7 +33,6 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/signUp" element={<SignUp />} />
-
           {/* <Route exact path="/home" element={<Home />} /> */}
           <Route
             path="/home"
@@ -42,7 +42,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/addNote"
             element={
@@ -51,7 +50,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/editNote/:id"
             element={
@@ -60,7 +58,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/viewNote/:id"
             element={
@@ -69,7 +66,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/profile"
             element={
@@ -78,7 +74,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/profile/update"
             element={
@@ -87,11 +82,17 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-          {/* Catch unsupported routes */}
+          <Route
+            path="profile/update/password"
+            element={
+              <ProtectedRoute>
+                <ProfilePasswordUpdate />
+              </ProtectedRoute>
+            }
+          />
+          /{/* Catch unsupported routes */}
           <Route path="/*" element={<Navigate to="/unsupported" />} />
           <Route path="/unsupported" element={<PageNotSupported />} />
-
           <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
