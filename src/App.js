@@ -15,6 +15,8 @@ import Login from "./pages/Login";
 import { Navigate } from "react-router-dom";
 import PageNotSupported from "./pages/PageNotSupported";
 import SignUp from "./pages/SignUp";
+import Profile from "./user/Profile";
+import ProfileUpdate from "./user/ProfileUpdate";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -64,6 +66,24 @@ function App() {
             element={
               <ProtectedRoute>
                 <ViewNote />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/profile/update"
+            element={
+              <ProtectedRoute>
+                <ProfileUpdate />
               </ProtectedRoute>
             }
           />
