@@ -73,12 +73,14 @@ export default function EditNote() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
-              <Link className="btn btn-outline-danger mx-2" to={"/home"}>
-                Cancel
-              </Link>
-              <button type="submit" className="btn btn-outline-primary">
-                Submit
-              </button>
+              <div style={{ marginTop: "40px" }}>
+                <Link className="btn btn-outline-danger mx-2" to={"/home"}>
+                  Cancel
+                </Link>
+                <button type="submit" className="btn btn-outline-primary">
+                  Submit
+                </button>
+              </div>
             </div>
           </form>
         </div>

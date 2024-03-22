@@ -18,6 +18,7 @@ import SignUp from "./pages/SignUp";
 import Profile from "./user/Profile";
 import ProfileUpdate from "./user/ProfileUpdate";
 import ProfilePasswordUpdate from "./user/ProfilePasswordUpdate";
+import Settings from "./pages/Settings";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -87,6 +88,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProfilePasswordUpdate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
               </ProtectedRoute>
             }
           />

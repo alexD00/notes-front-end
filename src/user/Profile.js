@@ -82,7 +82,7 @@ export default function Profile() {
                     Return Home
                   </Link> */}
                   <Link className="btn btn-primary my-2" to={"/profile/update"}>
-                    Update info
+                    Update
                   </Link>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function Profile() {
               to={"/profile/update/password"}
               style={{ marginTop: "20px" }}
             >
-              Update password
+              Update
             </Link>
           </div>
         </div>

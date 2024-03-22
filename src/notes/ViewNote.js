@@ -44,9 +44,11 @@ export default function ViewNote() {
             </li>
           </ul>
 
-          <Link className="btn btn-primary my-2" to={"/home"}>
-            Return Home
-          </Link>
+          <div style={{ marginTop: "20px" }}>
+            <Link className="btn btn-primary my-2" to={"/home"}>
+              Return Home
+            </Link>
+          </div>
         </div>
       </div>
     </div>

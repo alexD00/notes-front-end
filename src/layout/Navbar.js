@@ -5,6 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { MdNoteAlt } from "react-icons/md";
+import { IoMdSettings } from "react-icons/io";
 
 export default function Navbar() {
   const location = useLocation();
@@ -65,6 +66,11 @@ export default function Navbar() {
               <li>
                 <Link className="dropdown-item" to="/profile">
                   <FaUser /> Profile
+                </Link>
+              </li>
+              <li>
+                <Link className="dropdown-item" to="/settings">
+                  <IoMdSettings /> Settings
                 </Link>
               </li>
               <li>
