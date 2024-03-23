@@ -126,7 +126,7 @@ export default function Home() {
                           ></button>
                         </div>
                         <div class="modal-body">
-                          Are you sure you want to delete note titled: $
+                          Are you sure you want to delete note titled:
                           {note.title}
                         </div>
                         <div class="modal-footer">

@@ -18,6 +18,7 @@ export default function Settings() {
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Settings</h2>
+          <hr />
           <div style={{ marginTop: "40px" }}>
             <div className="d-flex justify-content-between">
               <h6 className="text-start">Theme</h6>

@@ -32,9 +32,10 @@ export default function AddNote() {
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Add Note</h2>
+          <hr />
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
-              <div>
+              <div className="text-start">
                 <label htmlFor="Name" className="form-label">
                   Title
                 </label>
@@ -46,10 +47,16 @@ export default function AddNote() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
-              <label htmlFor="Name" className="form-label">
-                Content
-              </label>
-              <div style={{ marginBottom: "20px" }}>
+
+              <div className="text-start">
+                <label
+                  htmlFor="Name"
+                  className="form-label"
+                  style={{ marginTop: "20px" }}
+                >
+                  Content
+                </label>
+
                 <textarea
                   className="form-control"
                   style={{ height: "200px" }}
@@ -59,11 +66,20 @@ export default function AddNote() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
+
               <div style={{ marginTop: "40px" }}>
-                <Link className="btn btn-outline-danger mx-2" to={"/home"}>
+                <Link
+                  className="btn btn-secondary mx-2"
+                  to={"/home"}
+                  style={{ width: "100px" }}
+                >
                   Cancel
                 </Link>
-                <button type="submit" className="btn btn-outline-primary">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: "100px" }}
+                >
                   Submit
                 </button>
               </div>

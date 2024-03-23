@@ -49,10 +49,11 @@ export default function SignUp() {
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Sign up</h2>
+          <hr />
           {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
-              <div>
+              <div className="text-start">
                 <label htmlFor="Name" className="form-label">
                   Username
                 </label>
@@ -97,14 +98,14 @@ export default function SignUp() {
                     name="password"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary mx-2"
-                  style={{ marginTop: "40px" }}
-                >
-                  Sign Up
-                </button>
               </div>
+              <button
+                type="submit"
+                className="btn btn-primary mx-2"
+                style={{ marginTop: "40px", width: "100px" }}
+              >
+                Sign Up
+              </button>
             </div>
           </form>
         </div>

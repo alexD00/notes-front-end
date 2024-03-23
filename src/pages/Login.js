@@ -59,10 +59,11 @@ export default function Login() {
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Log in</h2>
+          <hr />
           {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
-              <div>
+              <div className="text-start">
                 <label htmlFor="Name" className="form-label">
                   Username
                 </label>
@@ -74,7 +75,7 @@ export default function Login() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
-              <div>
+              <div className="text-start">
                 <label
                   htmlFor="Name"
                   className="form-label"
@@ -94,7 +95,7 @@ export default function Login() {
               <button
                 type="submit"
                 className="btn btn-primary mx-2"
-                style={{ marginTop: "40px" }}
+                style={{ marginTop: "40px", width: "100px" }}
               >
                 Login
               </button>

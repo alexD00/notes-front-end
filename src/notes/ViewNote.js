@@ -28,6 +28,7 @@ export default function ViewNote() {
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">{note.title}</h2>
+          <hr />
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <div style={{ marginBottom: "20px" }}>

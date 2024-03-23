@@ -50,9 +50,9 @@ export default function Profile() {
         <div className="row">
           <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
             <h2 className="text-center m-4">Profile</h2>
-            {/* <form> */}
+            <hr />
             <div className="mb-3">
-              <div>
+              <div className="text-start">
                 <label htmlFor="Name" className="form-label">
                   Username
                 </label>
@@ -77,17 +77,39 @@ export default function Profile() {
                     readOnly
                   />
                 </div>
-                <div style={{ marginTop: "40px" }}>
-                  {/* <Link className="btn btn-outline-primary me-2" to={"/home"}>
-                    Return Home
-                  </Link> */}
-                  <Link className="btn btn-primary my-2" to={"/profile/update"}>
-                    Update
-                  </Link>
-                </div>
+              </div>
+              <div style={{ marginTop: "40px" }}>
+                <Link
+                  className="btn btn-primary my-2"
+                  style={{ width: "100px" }}
+                  to={"/profile/update"}
+                >
+                  Update
+                </Link>
               </div>
             </div>
-            {/* </form> */}
+            <hr style={{ marginTop: "40px", marginBottom: "20px" }} />
+
+            <div
+              style={{
+                marginBottom: "20px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div className="text-start">
+                <label>Password</label>
+              </div>
+              <div>
+                <Link
+                  className="btn btn-primary my-2"
+                  to={"/profile/update/password"}
+                  style={{ width: "100px", marginLeft: "140px" }}
+                >
+                  Update
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -125,20 +147,6 @@ export default function Profile() {
           </div>
         </div>
       )}
-      <div className="container" style={{ marginTop: "20px" }}>
-        <div className="row">
-          <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-            <h2 className="text-center m-4">Password</h2>
-            <Link
-              className="btn btn-primary my-2"
-              to={"/profile/update/password"}
-              style={{ marginTop: "20px" }}
-            >
-              Update
-            </Link>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
