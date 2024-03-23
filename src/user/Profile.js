@@ -38,10 +38,6 @@ export default function Profile() {
     loadNumNotes();
   }, []);
 
-  // useEffect(() => {
-  //   loadNumNotes();
-  // }, []);
-
   const loadUserProfile = async () => {
     const result = await axios.get(`http://localhost:8080/api/users/profile`, {
       headers: {
