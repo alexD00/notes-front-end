@@ -8,6 +8,8 @@ export default function Profile() {
     email: "",
   });
 
+  const [numNotes, setNumNotes] = useState(null);
+
   const queryParams = new URLSearchParams(window.location.search);
   const isSuccess = queryParams.get("successInfo") === "true";
   const [showAlert, setShowAlert] = useState(isSuccess);
@@ -33,7 +35,12 @@ export default function Profile() {
 
   useEffect(() => {
     loadUserProfile();
+    loadNumNotes();
   }, []);
+
+  // useEffect(() => {
+  //   loadNumNotes();
+  // }, []);
 
   const loadUserProfile = async () => {
     const result = await axios.get(`http://localhost:8080/api/users/profile`, {
@@ -42,6 +49,15 @@ export default function Profile() {
       },
     });
     setUserInfo(result.data);
+  };
+
+  const loadNumNotes = async () => {
+    const result = await axios.get(`http://localhost:8080/api/users/numNotes`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
+    setNumNotes(result.data);
   };
 
   return (
@@ -74,6 +90,21 @@ export default function Profile() {
                     className="form-control"
                     name="email"
                     value={email}
+                    readOnly
+                  />
+                </div>
+                <label
+                  htmlFor="Name"
+                  className="form-label"
+                  style={{ marginTop: "20px" }}
+                >
+                  Number of notes
+                </label>
+                <div>
+                  <input
+                    className="form-control"
+                    name="number"
+                    value={numNotes}
                     readOnly
                   />
                 </div>
