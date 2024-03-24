@@ -5,15 +5,37 @@ import { BsSearch } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
 import { LuEye } from "react-icons/lu";
+import { MdNoteAlt } from "react-icons/md";
 
 export default function Home() {
   const [search, setSearch] = useState("");
 
   const [filteredNotes, setFilteredNotes] = useState([]);
 
+  const [numNotes, setNumNotes] = useState(null);
+
+  const [addNoteLabel, setAddNoteLabel] = useState(false);
+
   useEffect(() => {
     filterNotes();
   }, [search]); // Trigger filterNotes whenever the search state changes
+
+  useEffect(() => {
+    if (numNotes !== null) {
+      if (numNotes === 0) {
+        setAddNoteLabel(true);
+      }
+    }
+  }, [numNotes]);
+
+  const loadNumNotes = async () => {
+    const result = await axios.get(`http://localhost:8080/api/users/numNotes`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+      },
+    });
+    setNumNotes(result.data);
+  };
 
   const filterNotes = async () => {
     try {
@@ -26,6 +48,7 @@ export default function Home() {
         }
       );
       setFilteredNotes(response.data); // Update state with filtered notes data
+      loadNumNotes();
     } catch (error) {
       console.error("Error fetching filtered notes:", error);
     }
@@ -37,7 +60,6 @@ export default function Home() {
         Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
       },
     });
-    // loadNotes();
     window.location.reload();
   };
 
@@ -143,7 +165,6 @@ export default function Home() {
                             class="btn btn-primary"
                             style={{ width: "100px" }}
                             onClick={(e) => {
-                              console.log("Clicked Confirm");
                               deleteNote(note.id);
                             }}
                           >
@@ -158,6 +179,25 @@ export default function Home() {
             ))}
           </tbody>
         </table>
+        {addNoteLabel && (
+          <div style={{ marginTop: "80px" }}>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+                  <h2 className="text-center m-4">You do not have any notes</h2>
+                  <Link type="button" class="btn btn-primary" to="/addNote">
+                    <MdNoteAlt /> Add note
+                  </Link>
+                  <div className="mb-3">
+                    <div className="text-start">
+                      <label htmlFor="Name" className="form-label"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
