@@ -58,6 +58,40 @@ export default function Profile() {
 
   return (
     <div>
+      {showAlert && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          <div
+            className="alert alert-success"
+            role="alert"
+            style={{ display: "inline-block", minWidth: "fit-content" }}
+          >
+            User info updated successfully
+          </div>
+        </div>
+      )}
+      {showAlertPass && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          <div
+            className="alert alert-success"
+            role="alert"
+            style={{ display: "inline-block", minWidth: "fit-content" }}
+          >
+            Password updated successfully
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="row">
           <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
@@ -140,40 +174,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      {showAlert && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "40px",
-          }}
-        >
-          <div
-            className="alert alert-success"
-            role="alert"
-            style={{ display: "inline-block", minWidth: "fit-content" }}
-          >
-            User info updated successfully
-          </div>
-        </div>
-      )}
-      {showAlertPass && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "40px",
-          }}
-        >
-          <div
-            className="alert alert-success"
-            role="alert"
-            style={{ display: "inline-block", minWidth: "fit-content" }}
-          >
-            Password updated successfully
-          </div>
-        </div>
-      )}
     </div>
   );
 }
