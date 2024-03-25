@@ -103,7 +103,11 @@ export default function Home() {
                 </th>
                 <td>{note.title}</td>
                 <td>{note.content.substring(0, 35)}</td>
-                <td>{note.createdAt.substring(0, 10)}</td>
+                <td>
+                  {note.createdAt.substring(5, 7)}-
+                  {note.createdAt.substring(8, 10)}-
+                  {note.createdAt.substring(0, 4)}
+                </td>
                 <td>
                   <Link
                     className="btn btn-primary mx-2"
@@ -122,24 +126,25 @@ export default function Home() {
                     type="button"
                     class="btn btn-danger mx-2"
                     data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
+                    data-bs-target={`#deleteModal-${note.id}`}
                   >
                     <MdDelete /> Delete
                   </button>
 
                   <div
-                    class="modal fade"
-                    id="staticBackdrop"
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    tabindex="-1"
-                    aria-labelledby="staticBackdropLabel"
+                    className="modal fade"
+                    id={`deleteModal-${note.id}`}
+                    tabIndex="-1"
+                    aria-labelledby={`deleteModalLabel-${note.id}`}
                     aria-hidden="true"
                   >
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header modal-cont">
-                          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                          <h1
+                            className="modal-title fs-5"
+                            id={`deleteModalLabel-${note.id}`}
+                          >
                             Delete Note
                           </h1>
                           <button

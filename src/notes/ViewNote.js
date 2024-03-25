@@ -34,7 +34,11 @@ export default function ViewNote() {
               <div style={{ marginBottom: "20px" }}>
                 {note.createdAt &&
                   typeof note.createdAt === "string" &&
-                  note.createdAt.substring(0, 10)}
+                  note.createdAt.substring(5, 7) +
+                    "-" +
+                    note.createdAt.substring(8, 10) +
+                    "-" +
+                    note.createdAt.substring(0, 4)}
               </div>
               <textarea
                 className="form-control"
