@@ -1,16 +1,58 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
-
 export default function Settings({ theme, toggleTheme }) {
-  const deleteAccount = async () => {
-    await axios.delete(`http://localhost:8080/api/users`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
-      },
+  const [userPasswordInfo, setUserPasswordInfo] = useState({
+    userPassword: "",
+  });
+
+  const { userPassword } = userPasswordInfo;
+
+  const [error, setError] = useState(null);
+
+  const onInputChange = (e) => {
+    setUserPasswordInfo({
+      ...userPasswordInfo,
+      [e.target.name]: e.target.value,
     });
-    window.location.reload();
-    sessionStorage.removeItem("jwtToken");
+  };
+
+  useEffect(() => {
+    if (error) {
+      const timeoutId = setTimeout(() => {
+        setError(null); // Clear error after 4 seconds
+      }, 4000);
+
+      // Clear timeout when component unmounts or error changes
+      return () => clearTimeout(timeoutId);
+    }
+  }, [error]);
+
+  const deleteAccount = async () => {
+    try {
+      console.log(userPasswordInfo);
+      const response = await axios.delete(`http://localhost:8080/api/users`, {
+        data: userPasswordInfo,
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
+        },
+      });
+      console.log(response);
+      window.location.reload();
+      sessionStorage.removeItem("jwtToken");
+    } catch (error) {
+      console.error("Delete Account failed:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.errorMessage
+      ) {
+        setError(error.response.data.errorMessage); // Set error message from response
+      } else {
+        // Default error message for any other error
+        setError("Delete account failed. Please try again later.");
+      }
+    }
   };
 
   return (
@@ -73,7 +115,16 @@ export default function Settings({ theme, toggleTheme }) {
                       ></button>
                     </div>
                     <div class="modal-body modal-cont">
-                      Are you sure you want to delete your account?
+                      {error && (
+                        <div className="alert alert-danger">{error}</div>
+                      )}
+                      <input
+                        placeholder="Enter password"
+                        type="password"
+                        name="userPassword"
+                        value={userPassword}
+                        onChange={(e) => onInputChange(e)}
+                      ></input>
                     </div>
                     <div class="modal-footer modal-cont">
                       <button
