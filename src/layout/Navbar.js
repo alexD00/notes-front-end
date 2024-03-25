@@ -55,37 +55,39 @@ export default function Navbar() {
               <IoIosMenu />
             </button>
             <ul
-              className="dropdown-menu dropdown-menu-end"
+              className="dropdown-menu dropdown-menu-end menu-cont"
               aria-labelledby="userDropdown"
             >
-              <li>
-                <Link className="dropdown-item" to="/home">
-                  <AiFillHome /> Home
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/profile">
-                  <FaUser /> Profile
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/settings">
-                  <IoMdSettings /> Settings
-                </Link>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <Link
-                  className="dropdown-item"
-                  to="/"
-                  style={{ color: "red" }}
-                  onClick={handleLogout}
-                >
-                  <TbLogout /> Log out
-                </Link>
-              </li>
+              <div className="menu-cont">
+                <li>
+                  <Link className="dropdown-item menu-cont" to="/home">
+                    <AiFillHome /> Home
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item menu-cont" to="/profile">
+                    <FaUser /> Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item menu-cont" to="/settings">
+                    <IoMdSettings /> Settings
+                  </Link>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item menu-cont"
+                    to="/"
+                    style={{ color: "red" }}
+                    onClick={handleLogout}
+                  >
+                    <TbLogout /> Log out
+                  </Link>
+                </li>
+              </div>
             </ul>
           </div>
         </div>

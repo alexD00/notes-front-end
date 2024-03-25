@@ -94,7 +94,7 @@ export default function Profile() {
       )}
       <div className="container">
         <div className="row">
-          <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+          <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow target-container">
             <h2 className="text-center m-4">Profile</h2>
             <hr />
             <div className="mb-3">

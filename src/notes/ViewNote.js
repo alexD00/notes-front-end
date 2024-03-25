@@ -26,11 +26,11 @@ export default function ViewNote() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow target-container">
           <h2 className="text-center m-4">{note.title}</h2>
           <hr />
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
+            <li className="list-group-item target-container">
               <div style={{ marginBottom: "20px" }}>
                 {note.createdAt &&
                   typeof note.createdAt === "string" &&

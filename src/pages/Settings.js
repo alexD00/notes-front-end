@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { MdDelete } from "react-icons/md";
 
-export default function Settings() {
+export default function Settings({ theme, toggleTheme }) {
   const deleteAccount = async () => {
     await axios.delete(`http://localhost:8080/api/users`, {
       headers: {
@@ -16,7 +16,7 @@ export default function Settings() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow target-container">
           <h2 className="text-center m-4">Settings</h2>
           <hr />
           <div style={{ marginTop: "40px" }}>
@@ -27,9 +27,11 @@ export default function Settings() {
                   className="form-check-input"
                   type="checkbox"
                   id="themeToggle"
+                  onChange={toggleTheme}
+                  checked={theme === "dark"}
                 />
                 <label className="form-check-label" htmlFor="themeToggle">
-                  Light
+                  {theme === "light" ? "Light Mode" : "Dark Mode"}
                 </label>
               </div>
             </div>
@@ -59,12 +61,8 @@ export default function Settings() {
               >
                 <div class="modal-dialog">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h1
-                        class="modal-title fs-5"
-                        id="staticBackdropLabel"
-                        style={{ color: "red" }}
-                      >
+                    <div class="modal-header modal-cont">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">
                         Delete Account
                       </h1>
                       <button
@@ -74,10 +72,10 @@ export default function Settings() {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body modal-cont">
                       Are you sure you want to delete your account?
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer modal-cont">
                       <button
                         type="button"
                         class="btn btn-secondary"

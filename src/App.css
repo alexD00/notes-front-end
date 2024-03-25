@@ -36,3 +36,52 @@
     transform: rotate(360deg);
   }
 }
+
+#dark {
+  /* background-color: #1e1e1e; */
+  background-color: #303030;
+  min-height: 100vh;
+}
+
+#dark .target-container {
+  background-color: #424242;
+  color: white;
+}
+
+#dark .menu-cont {
+  background-color: gray;
+  color: white;
+}
+
+#dark .menu-cont:hover {
+  color: black;
+}
+
+#dark .border {
+  border: 1px solid transparent !important;
+}
+
+#dark .search-bar {
+  background-color: grey;
+  color: white;
+  border: transparent;
+}
+
+#dark .loop {
+  background-color: #424242;
+}
+
+#dark .label-color {
+  color: white;
+}
+
+#dark .pns {
+  background-color: #424242;
+  color: white;
+  min-height: 100vh;
+}
+
+#dark .modal-cont {
+  background-color: gray;
+  color: white;
+}

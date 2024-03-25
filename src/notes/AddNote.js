@@ -30,7 +30,7 @@ export default function AddNote() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow target-container">
           <h2 className="text-center m-4">Add Note</h2>
           <hr />
           <form onSubmit={(e) => onSubmit(e)}>

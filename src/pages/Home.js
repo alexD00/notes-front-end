@@ -67,7 +67,10 @@ export default function Home() {
     <div className="container">
       <div className="py-4">
         <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">
+          <span
+            class="input-group-text search-bar"
+            id="inputGroup-sizing-default"
+          >
             <BsSearch />
           </span>
           <input
@@ -79,7 +82,10 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <table className="table border shadow">
+        <table
+          className="table table-striped border shadow"
+          style={{ backgroundColor: "grey", color: "white" }}
+        >
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -132,12 +138,8 @@ export default function Home() {
                   >
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h1
-                            class="modal-title fs-5"
-                            id="staticBackdropLabel"
-                            style={{ color: "red" }}
-                          >
+                        <div class="modal-header modal-cont">
+                          <h1 class="modal-title fs-5" id="staticBackdropLabel">
                             Delete Note
                           </h1>
                           <button
@@ -147,11 +149,11 @@ export default function Home() {
                             aria-label="Close"
                           ></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body modal-cont">
                           Are you sure you want to delete note titled:
                           {note.title}
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer modal-cont">
                           <button
                             type="button"
                             class="btn btn-secondary"
@@ -183,7 +185,7 @@ export default function Home() {
           <div style={{ marginTop: "80px" }}>
             <div className="container">
               <div className="row">
-                <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+                <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow target-container">
                   <h2 className="text-center m-4">You do not have any notes</h2>
                   <Link type="button" class="btn btn-primary" to="/addNote">
                     <MdNoteAlt /> Add note

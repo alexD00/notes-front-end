@@ -57,7 +57,7 @@ export default function Login() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow target-container">
           <h2 className="text-center m-4">Log in</h2>
           <hr />
           {error && <div className="alert alert-danger">{error}</div>}
@@ -103,7 +103,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <div style={{ marginTop: "20px" }}>
+      <div className="label-color" style={{ marginTop: "20px" }}>
         Don't have an account? <Link to="/signUp">Sign up</Link>
       </div>
       {showAlert && (
